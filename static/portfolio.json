@@ -1,0 +1,368 @@
+[
+  {
+  "Etudiant"     : "Adrien Bouteiller",
+  "Specialite"   : "Développement",
+  "Portfolio"    : "https://adrienbouteiller.com",
+  "git"          :"",
+  "img"          : "https://armandomanzoli.fr/images/adrien.jpg"
+  },
+  {
+    "Etudiant"     : "Allan Pinot",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://allanpinot.fr",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/allan.jpg"
+  },
+  {
+    "Etudiant"     : "Alois Bolou",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://aloisbolou.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/alois.jpg"
+  },
+  {
+    "Etudiant"     : "Ambre geiss",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://ambregeiss.fr/",
+    "git"          :"",
+    "img"          : ""
+  },
+  {
+    "Etudiant"     : "Antonin Lainé",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://antoninlaine.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/antonin.jpg"
+  },
+  {
+    "Etudiant"     : "Armando Manzoli",
+    "Specialite"   : "Développement",
+    "Portfolio"    : "https://armandomanzoli.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/armando.jpg"
+  },
+  {
+    "Etudiant"     : "Benjamin Bey",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://benjaminbey.fr/",
+    "git"          :"",
+    "img"          : ""
+  },
+  {
+    "Etudiant"     : "Cécile Gaultier",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "https://cecile-gaultier.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/cecile.jpg"
+  },
+  {
+    "Etudiant"     : "Charlotte jeannot",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://cjeannot.fr",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/charlotte.jpg"
+  },
+  {
+    "Etudiant"     : "Clara Bouvier",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://cbouvier.fr",
+    "git"          :"",
+    "img"          : ""
+  },
+  {
+    "Etudiant"     : "Coline Jacobé",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "http://www.jacobe.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/coline.jpg"
+  },
+  {
+    "Etudiant"     : "Coralie varrier",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "https://coralievarrier.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/coralie.jpg"
+  },
+  {
+    "Etudiant"     : "Damien Villeneuve",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://damien-villeneuve.com/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/damien.jpg"
+  },
+  {
+    "Etudiant"     : "Elmir Gérovic",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://elmirgerovic.com/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/elmir.jpg"
+  },
+  {
+    "Etudiant"     : "Garion Tanguy",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "https://gariontanguy.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/garion.jpg"
+  },
+  {
+    "Etudiant"     : "Guillaume Walter",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://www.guillaumewalter.fr",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/guillaume.jpg"
+  },
+  {
+    "Etudiant"     : "Hugo Joubert",
+    "Specialite"   : "Communication",
+    "Portfolio"    : "http://hugojoubert.com/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/hugo.jpg"
+  },
+  {
+    "Etudiant"     : "jalis Hadjadj",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "http://jalishadjadj.fr",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/jalis.jpg"
+  },
+  {
+    "Etudiant"     : "Paul Garnier",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://jenesuispasjean.com",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/paulg.jpg"
+  },
+  {
+    "Etudiant"     : "Jérémie Herzog",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "http://jeremieherzog.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/jeremie.jpg"
+  },
+  {
+    "Etudiant"     : "Joseph Mcdonough",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "http://joseph-mcdonough.com/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/joseph.jpg"
+  },
+  {
+    "Etudiant"     : "Julien Robert",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://robertodelanoche.fr",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/julien.jpg"
+  },
+  {
+    "Etudiant"     : "Khadija Boudjemline",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "https://khadijaboudjemline.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/khadija.jpg"
+  },
+  {
+    "Etudiant"     : "Khaly Sileye Thiam",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "http://www.khalysileye.com",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/khaly.jpg"
+  },
+  {
+    "Etudiant"     : "laura Brager",
+    "Specialite"   : "Communication",
+    "Portfolio"    : "http://laurabrager.com/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/laura.jpg"
+  },
+  {
+    "Etudiant"     : "Laura Demougeot",
+    "Specialite"   : "Communication",
+    "Portfolio"    : "http://laurademougeot.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/laurad.jpg"
+  },
+  {
+    "Etudiant"     : "Lilian Cayot",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://liliancayot.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/lilian.jpg"
+  },
+  {
+    "Etudiant"     : "Lou Segaud",
+    "Specialite"   : "Communication",
+    "Portfolio"    : "http://lousegaud.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/lou.jpg"
+  },
+  {
+    "Etudiant"     : "Louis Albac",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://louis-albac.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/louis.jpg"
+  },
+  {
+    "Etudiant"     : "Louis Cuenot",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "http://www.louiscuenot.com",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/louisc.jpg"
+  },
+  {
+    "Etudiant"     : "Lucas Bailly",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://www.lucasbailly.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/lucas.jpg"
+  },
+  {
+    "Etudiant"     : "Malsor Hamiti",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "https://malsorhamiti.fr",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/malsor.jpg"
+  },
+  {
+    "Etudiant"     : "Manon Jeanpierre",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://manonjeanpierre.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/manon.jpg"
+  },
+  {
+    "Etudiant"     : "Marie-anh Devisy",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://www.marieanh.fr",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/marie.jpg"
+  },
+  {
+    "Etudiant"     : "Mathilde Vauquieres",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://mathildevauquieres.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/mathilde.jpg"
+  },
+  {
+    "Etudiant"     : "Maxime Peter",
+    "Specialite"   : "Communication",
+    "Portfolio"    : "http://www.maximepeter.fr/",
+    "git"          :"",
+    "img"          : ""
+  },
+  {
+    "Etudiant"     : "Moîse Yombo",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "https://www.moiseyombo.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/moise.jpg"
+  },
+  {
+    "Etudiant"     : "Nicolas langlais",
+    "Specialite"   : "Communication",
+    "Portfolio"    : "https://nicolaslanglais.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/nicolas.jpg"
+  },
+  {
+    "Etudiant"     : "Noé Lamy-Pithos",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "https://noelamy.fr/",
+    "git"          :"",
+    "img"          : ""
+  },
+  {
+    "Etudiant"     : "Paul Akar",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://paulakar.fr",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/paula.jpg"
+  },
+  {
+    "Etudiant"     : "Paul Cotogno",
+    "Specialite"   : "Communication",
+    "Portfolio"    : "http://www.paulcotogno.com/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/paulc.jpg"
+  },
+  {
+    "Etudiant"     : "Paul Sémon",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "https://www.paulsemon.com/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/pauls.jpg"
+  },
+  {
+    "Etudiant"     : "Sebastien jourdain",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "https://sebastienjourdain.com/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/sebastien.jpg"
+  },
+  {
+    "Etudiant"     : "Steven Goffinet",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://stevengoffinet.fr",
+    "git"          :"",
+    "img"          : ""
+  },
+  {
+    "Etudiant"     : "Thibault Moebel",
+    "Specialite"   : "Communication",
+    "Portfolio"    : "http://www.thibaultmoebel.com",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/thibault.jpg"
+  },
+  {
+    "Etudiant"     : "Thomas Foubert",
+    "Specialite"   : "Communication",
+    "Portfolio"    : "http://thomasfoubert.com/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/thomas.jpg"
+  },
+  {
+    "Etudiant"     : "Thimothée Durand",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "https://timotheedurand.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/thimothee.jpg"
+  },
+  {
+    "Etudiant"     : "Tristant Seclet",
+    "Specialite"   : "Developpement",
+    "Portfolio"    : "http://tristanseclet.com",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/tristan.jpg"
+  },
+  {
+    "Etudiant"     : "Thiphaine Heinrich",
+    "Specialite"   : "Communication",
+    "Portfolio"    : "https://typhaineheinrich.fr",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/typhaine.jpg"
+  },
+  {
+    "Etudiant"     : "Violette Gruillot",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://violettegruillot.fr/",
+    "git"          :"",
+    "img"          : ""
+  },
+  {
+    "Etudiant"     : "Yacine Chouaita",
+    "Specialite"   : "Webdesign",
+    "Portfolio"    : "http://yacinechouaita.fr/",
+    "git"          :"",
+    "img"          : ""
+  },
+  {
+    "Etudiant"     : "Zéphyr Charly",
+    "Specialite"   : "Motion Design",
+    "Portfolio"    : "http://zephircharly.fr/",
+    "git"          :"",
+    "img"          : "https://armandomanzoli.fr/images/zephir.jpg"
+  }
+
+
+]
