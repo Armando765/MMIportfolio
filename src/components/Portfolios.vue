@@ -35,7 +35,7 @@
           </div>
           <div class="content">
             <h2>{{ test.Etudiant }}</h2>
-            <a :href="test.Portfolio">Portfolio</a> <br>
+            <a :href="test.Portfolio" class="lien">Portfolio</a> <br>
             <button @click="remove(index)">
               Supprimer
             </button>
@@ -448,17 +448,38 @@ import axios from 'axios'
 }
 .content > h2 {
   font-family: 'Lexend', sans-serif;
+  font-size: 2.5em;
   color: #d5dee3;
 }
 .container .card:hover .content {
   visibility: visible;
   opacity: 1;
 }
-a {
+.lien {
   text-decoration: none;
-  color: red;
-  font-size: 2em;
+  font-family: 'Merienda', sans-serif;
+  color: #d5dee3;
+  font-size: 2.5em;
   text-align: center;
+  transition: .5s;
+}
+.lien:hover {
+  text-decoration: underline;
+}
+.content > button {
+  border: none;
+  background-color: #d5dee3;
+  color: #8F0002;
+  font-family: 'Lexend', sans-serif;
+  font-size: 1.1em;
+  margin-top: 30px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: .5s;
+}
+.content > button:hover {
+  transform: scale(1.05);
 }
 .specialites {
   width: 50%;
