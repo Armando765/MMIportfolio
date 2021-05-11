@@ -4,8 +4,8 @@
       <header>
         <nav>
           <ul>
-            <li><a href="#" @click="Modale">Se Connecter</a></li>
-            <li><a href="#">Informations</a></li>
+            <li><a v-if="loggedIn" href="#" @click="signOut()">Déconnexion</a><a href="#" v-else @click="Modale">Se Connecter</a></li>
+            <li><a v-if="loggedIn">Etat : Connecté</a><a v-else href="#">Etat : Non Connecté</a></li>
             <li><a href="#">Accueil</a></li>
           </ul>
         </nav>
@@ -15,7 +15,7 @@
 
       <div class="filtrageportfolio">
         <p>Rechercher un portfolio</p>
-        <input v-model="query" type="text">
+        <input v-model="query" type="text" placeholder="Prénom Nom">
       </div>
 
       <!--
@@ -68,9 +68,9 @@
         </button>
       </form>
     </div>
-      <footer>
-        <img src="../assets/logouniv.png" alt="logo université">
-      </footer>
+    <footer>
+      <img src="../assets/logouniv.png" alt="logo université">
+    </footer>
 
     <div id="popup">
       <img src="../assets/croix.png" alt="croix" width="30px" height="30px" @click="Modale">
@@ -161,77 +161,101 @@ export default {
   },
 }
 */
+import firebase from "firebase";
+import "firebase/auth";
+import "firebase/storage"
 import axios from 'axios'
-  export default {
-    name:'Portfolios',
-    data () {
-      return {
-        site : [],
-        images : [],
-        query: "",
-        selectedSpecialite: "All"
+export default {
+  name:'Portfolios',
+  data () {
+    return {
+      site : [],
+      images : [],
+      query: "",
+      selectedSpecialite: "All",
+      loggedIn: false,
+      filejson: null,
+    }
+  },
+  created(){
+
+    axios.get('static/portfolio.json')
+      .then(function (response) {
+
+        console.log(response.data);
+        this.site = response.data;
+
+      }.bind(this))
+      .catch(function (error) {
+        //erreur//
+        console.log(error);
+      });
+    firebase.auth().onAuthStateChanged(user=> {
+      this.loggedIn = !!user;
+      /*
+      if (user){
+        this.loggedIn = true;
+      }else{
+        this.logged = false;
+      }
+       */
+    })
+  },
+  computed:{
+    filtreSpecialite: function() {
+      var vm = this;
+      var category = vm.selectedSpecialite;
+      if(category === "All") {
+        return vm.site;
+      } else {
+        return vm.site.filter(function(person) {
+          return person.Specialite === category;
+        });
       }
     },
-    created(){
-
-      axios.get('static/portfolio.json')
-        .then(function (response) {
-
-          console.log(response.data);
-          this.site = response.data;
-
-        }.bind(this))
-        .catch(function (error) {
-          //erreur//
-          console.log(error);
-        });
+    SearchByEtudiant: function (){
+      var query = this.query;
+      return this.site.filter(function (eleve){
+        return eleve.Etudiant.includes(query);
+      })
     },
-    computed:{
-      filtreSpecialite: function() {
-        var vm = this;
-        var category = vm.selectedSpecialite;
-        if(category === "All") {
-          return vm.site;
-        } else {
-          return vm.site.filter(function(person) {
-            return person.Specialite === category;
-          });
-        }
-      },
-      SearchByEtudiant: function (){
-        var query = this.query;
-        return this.site.filter(function (eleve){
-          return eleve.Etudiant.includes(query);
-        })
-      },
+  },
+  methods:{
+    Ajouter: function (){
+      var ajout = this.site;
+      this.site.push({
+        Etudiant     : ajout.Etudiant,
+        Specialite   : ajout.Specialite,
+        Portfolio   : ajout.Portfolio,
+      });
     },
-    methods:{
-      Ajouter: function (){
-        var ajout = this.site;
-        this.site.push({
-          Etudiant     : ajout.Etudiant,
-          Specialite   : ajout.Specialite,
-          Portfolio   : ajout.Portfolio,
-        });
-      },
-      remove (index){
-        this.index = this.site;
-        this.site.splice(index, 1)
-      },
-      modaleAjout: function () {
-        var blur = document.getElementById('blur');
-        blur.classList.toggle('active')
-        var popupajout = document.getElementById('popupajouter');
-        popupajout.classList.toggle('active')
-      },
-      Modale () {
-        var blur = document.getElementById('blur');
-        blur.classList.toggle('active')
-        var popup = document.getElementById('popup');
-        popup.classList.toggle('active')
+    remove (index){
+      this.index = this.site;
+      this.site.splice(index, 1)
+    },
+    modaleAjout: function () {
+      var blur = document.getElementById('blur');
+      blur.classList.toggle('active')
+      var popupajout = document.getElementById('popupajouter');
+      popupajout.classList.toggle('active')
+    },
+    Modale () {
+      var blur = document.getElementById('blur');
+      blur.classList.toggle('active')
+      var popup = document.getElementById('popup');
+      popup.classList.toggle('active')
+    },
+    async signOut() {
+      try {
+        const data = firebase.auth().signOut();
+        console.log(data);
+        this.$router.replace({name: "Accueil"});
+      }catch (err){
+        console.log(err)
       }
-    },
-  }
+    }
+  },
+}
 </script>
 <style>
 #popupconnexion {
@@ -402,7 +426,6 @@ import axios from 'axios'
 
 .container {
   position: relative;
-  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -498,3 +521,5 @@ import axios from 'axios'
   font-size: 1.2em;
 }
 </style>
+
+

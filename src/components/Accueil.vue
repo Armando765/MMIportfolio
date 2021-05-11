@@ -7,7 +7,7 @@
         <nav>
           <ul>
             <li><a href="#" @click="Modale">Se Connecter</a></li>
-            <li><a href="#">Informations</a></li>
+            <li><a href="#">Etat : Non Connecté</a></li>
             <li><a href="#">Accueil</a></li>
           </ul>
         </nav>
@@ -149,34 +149,53 @@
     <div id="popup">
       <img src="../assets/croix.png" alt="croix" width="30px" height="30px" @click="Modale">
       <h3>Se Connecter</h3>
-      <form action="">
+      <form @submit.prevent="pressed">
         <div>
-          <label for="name">Adresse mail</label>
-          <input type="text" id="name">
+          <label>Adresse mail</label>
+          <input type="email" placeholder="login" v-model="email">
         </div>
         <div>
-          <label for="spe">Mot de passe</label>
-          <input  type="text" id="spe">
+          <label>Mot de passe</label>
+          <input type="password" v-model="password" placeholder="password">
         </div>
         <button type="submit" @click="Modale">
           Connexion
         </button>
       </form>
     </div>
-    </div>
+  </div>
 </template>
 <script>
-  export default {
-    name: 'Accueil',
-    methods: {
-      Modale () {
-        var blur = document.getElementById('blur');
-        blur.classList.toggle('active')
-        var popup = document.getElementById('popup');
-        popup.classList.toggle('active')
+import firebase from "firebase";
+import "firebase/auth";
+export default {
+  name: 'Accueil',
+  data () {
+    return {
+      email:"",
+      password:"",
+      error:'',
+    }
+  },
+  methods: {
+    Modale () {
+      var blur = document.getElementById('blur');
+      blur.classList.toggle('active')
+      var popup = document.getElementById('popup');
+      popup.classList.toggle('active')
+    },
+    async pressed() {
+      try {
+        const val= await firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+        console.log(val);
+        this.$router.replace({name: "Portfolios"});
+      }catch (err){
+        console.log(err)
       }
+
     }
   }
+}
 </script>
 <style>
 
