@@ -459,6 +459,7 @@ export default {
   top: -60px;
   left: 20px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  background-image: url("../assets/mmiportfolioimg.jpg");
 }
 .container .card  .imgBx img {
   max-width: 100%;
