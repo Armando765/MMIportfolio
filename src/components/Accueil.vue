@@ -214,7 +214,6 @@ export default {
 .presentation {
   width: 95%;
   height: 850px;
-  border: 1px solid red;
   margin-top: 350px;
 }
 .flexpresentation {
@@ -225,7 +224,6 @@ export default {
 .flexpresentation > div {
   width: 50%;
   height: 70%;
-  border: 1px solid blue;
 }
 .etudiant,.enseignant {
   background-color: #1D3354;

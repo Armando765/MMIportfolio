@@ -12,13 +12,11 @@
       </header>
       <h1 class="listeportfolio">Liste des Portfolios</h1>
 
-
       <div class="filtrageportfolio">
         <p>Rechercher un portfolio</p>
         <input v-model="query" type="text" placeholder="Prénom Nom">
       </div>
 
-      <!--
       <div class="filter">
       <label><input type="radio" v-model="selectedSpecialite" value="All" /> Toutes</label>
       <label><input type="radio" v-model="selectedSpecialite" value="Developpement" /> Developpement</label>
@@ -26,26 +24,26 @@
       <label><input type="radio" v-model="selectedSpecialite" value="Communication" /> Communication</label>
       <label><input type="radio" v-model="selectedSpecialite" value="Motion Design" /> Motion Design</label>
     </div>
-      -->
+
+      <div class="container">
+        <a href="#" @click="modaleAjout()" class="ajouterlien">Ajouter un Portfolio</a>
+      </div>
+
+
+
 
       <transition-group class="container" name="flip-list" tag="div">
         <div class="card" v-for="(test, index) in SearchByEtudiant" :key="test.Etudiant">
+          <img src="../assets/trashcan.svg" width="25px" height="25px" alt="poubelle" class="poubelle" @click="remove(index)">
           <div class="imgBx">
-            <img :src="test.img">
+            <a :href="test.Portfolio"><img alt="image du portfolio" :src="test.img"></a>
           </div>
           <div class="content">
             <h2>{{ test.Etudiant }}</h2>
-            <a :href="test.Portfolio" class="lien">Portfolio</a> <br>
-            <button @click="remove(index)">
-              Supprimer
-            </button>
           </div>
         </div>
       </transition-group>
 
-      <div class="container">
-        <a href="#" @click="modaleAjout()">Ajouter un Portfolio</a>
-      </div>
     </div>
     <div id="popupajouter">
       <img src="../assets/croix.png" alt="croix" width="30px" height="30px" @click="modaleAjout()">
@@ -53,15 +51,21 @@
       <form action="">
         <div>
           <label for="name">Etudiant :</label>
-          <input v-model="site.Etudiant" type="text" id="name">
+          <input required v-model="site.Etudiant" type="text" id="name">
         </div>
         <div>
-          <label for="spe">Spécialité : </label>
-          <input v-model="site.Specialite" type="text" id="spe">
+          <select v-model="site.Specialite">
+            <option disabled value="">Spécialité</option>
+            <option>Développement</option>
+            <option>Webdesign</option>
+            <option>Communication</option>
+            <option>Motion Design</option>
+          </select>
+          <span class="selectionne">Spécialité sélectionnée : {{ site.Specialite }}</span>
         </div>
         <div>
           <label for="lien">Portfolio : </label>
-          <input v-model="site.Portfolio" type="text" id="lien">
+          <input required v-model="site.Portfolio" type="text" id="lien">
         </div>
         <button type="submit" @click.prevent="Ajouter(); modaleAjout()">
           Ajouter
@@ -78,11 +82,11 @@
       <form action="">
         <div>
           <label for="name">Adresse mail</label>
-          <input type="text" >
+          <input required type="text" >
         </div>
         <div>
-          <label for="spe">Mot de passe</label>
-          <input  type="text">
+          <label>Mot de passe</label>
+          <input required  type="text">
         </div>
         <button type="submit" @click="Modale">
           Connexion
@@ -172,7 +176,8 @@ export default {
       site : [],
       images : [],
       query: "",
-      selectedSpecialite: "All",
+      select : null, //sélection spécialité lors de l'ajout
+      selectedSpecialite: "All", // filtre spécialité
       loggedIn: false,
       filejson: null,
     }
@@ -228,6 +233,7 @@ export default {
         Specialite   : ajout.Specialite,
         Portfolio   : ajout.Portfolio,
       });
+      console.log(this.site);
     },
     remove (index){
       this.index = this.site;
@@ -421,9 +427,6 @@ export default {
   font-size: 1.5em;
   color: gray;
 }
-
-
-
 .container {
   position: relative;
   display: flex;
@@ -447,7 +450,7 @@ export default {
   transition: 0.3s ease-in-out;
 }
 .container .card:hover {
-  height: 520px;
+  transform: translateY(-10px);
 }
 .container .card  .imgBx {
   position: relative;
@@ -460,23 +463,27 @@ export default {
 .container .card  .imgBx img {
   max-width: 100%;
   border-radius: 4px;
+  transition: .5s;
+}
+.container .card img:hover {
+  transform: scale(1.03);
 }
 .container .card .content {
   position: relative;
   text-align: center;
   color: #111;
-  visibility: hidden;
-  opacity: 0;
   transition: 0.3s ease-in-out;
+  transform: translateY(-25px);
+}
+.content {
+  margin: 0;
 }
 .content > h2 {
   font-family: 'Lexend', sans-serif;
-  font-size: 2.5em;
+  font-size: 2em;
   color: #d5dee3;
-}
-.container .card:hover .content {
+  margin: 0;
   visibility: visible;
-  opacity: 1;
 }
 .lien {
   text-decoration: none;
@@ -489,7 +496,7 @@ export default {
 .lien:hover {
   text-decoration: underline;
 }
-.content > button {
+.content > button,.ajouterlien {
   border: none;
   background-color: #d5dee3;
   color: #8F0002;
@@ -500,8 +507,9 @@ export default {
   border-radius: 25px;
   cursor: pointer;
   transition: .5s;
+  text-decoration: none;
 }
-.content > button:hover {
+.content > button:hover,.ajouterlien:hover {
   transform: scale(1.05);
 }
 .specialites {
@@ -519,6 +527,23 @@ export default {
 }
 .specialites > a:hover{
   font-size: 1.2em;
+}
+select {
+  width: 150px;
+  height: 35px;
+  margin: 40px 15px 0 0;
+  background-color: #d5dee3;
+  color: #1c3454;
+}
+.selectionne {
+  font-family: "Lexend", sans-serif;
+  color: #d5dee3;
+}
+.poubelle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 </style>
 
