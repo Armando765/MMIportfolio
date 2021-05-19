@@ -34,7 +34,7 @@
 
       <transition-group class="container" name="flip-list" tag="div">
         <div class="card" v-for="(test, index) in SearchByEtudiant" :key="test.Etudiant">
-          <img src="../assets/trashcan.svg" width="25px" height="25px" alt="poubelle" class="poubelle" @click="remove(index)">
+          <svg @click="remove(index)" width="25px" height="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash-alt" class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg>
           <div class="imgBx">
             <a :href="test.Portfolio"><img alt="image du portfolio" :src="test.img"></a>
           </div>
@@ -49,11 +49,15 @@
       <img src="../assets/croix.png" alt="croix" width="30px" height="30px" @click="modaleAjout()">
       <h3>Ajouter un Portfolio</h3>
       <form action="">
-        <div>
+        <div class="champs">
           <label for="name">Etudiant :</label>
           <input required v-model="site.Etudiant" type="text" id="name">
         </div>
-        <div>
+        <div class="champs">
+          <label for="lien">Portfolio : </label>
+          <input required v-model="site.Portfolio" type="text" id="lien">
+        </div>
+        <div class="champs">
           <select v-model="site.Specialite">
             <option disabled value="">Spécialité</option>
             <option>Développement</option>
@@ -63,11 +67,12 @@
           </select>
           <span class="selectionne">Spécialité sélectionnée : {{ site.Specialite }}</span>
         </div>
-        <div>
-          <label for="lien">Portfolio : </label>
-          <input required v-model="site.Portfolio" type="text" id="lien">
+        <input type="file" @change="onFileSelected">
+        <button class="upload" @click.prevent="onUpload">Upload</button>
+        <div class="preview">
+          <img :src="this.picture" alt="preview">
         </div>
-        <button type="submit" @click.prevent="Ajouter(); modaleAjout()">
+        <button class="ajouter" type="submit" @click.prevent="Ajouter(); modaleAjout()">
           Ajouter
         </button>
       </form>
@@ -175,6 +180,11 @@ export default {
     return {
       site : [],
       images : [],
+      imgfirebase: "",
+      imageData: null,
+      picture: null,
+      uploadValue: 0,
+      selectedFile: null,
       query: "",
       select : null, //sélection spécialité lors de l'ajout
       selectedSpecialite: "All", // filtre spécialité
@@ -226,15 +236,18 @@ export default {
     },
   },
   methods:{
+    // Fonction ajouter un portfolio
     Ajouter: function (){
       var ajout = this.site;
       this.site.push({
         Etudiant     : ajout.Etudiant,
         Specialite   : ajout.Specialite,
-        Portfolio   : ajout.Portfolio,
+        Portfolio    : ajout.Portfolio,
+        img          : ajout.img,
       });
       console.log(this.site);
     },
+    // Fonction supprimer un portfolio
     remove (index){
       this.index = this.site;
       this.site.splice(index, 1)
@@ -251,6 +264,7 @@ export default {
       var popup = document.getElementById('popup');
       popup.classList.toggle('active')
     },
+    //fonction déconnexion
     async signOut() {
       try {
         const data = firebase.auth().signOut();
@@ -259,6 +273,29 @@ export default {
       }catch (err){
         console.log(err)
       }
+    },
+    onFileSelected(event) {
+      this.selectedFile = event.target.files[0];
+    },
+    previewImage(event){
+      this.uploadValue=0;
+      this.picture=null;
+      this.imageData=event.target.files[0];
+    },
+    onUpload() {
+      this.picture=null;
+      const storageRef=firebase.storage().ref('${this.selectedFile.name}');
+      const task=storageRef.put(this.selectedFile);
+      task.on('state_changed',snapshot=>{
+        let percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+          this.uploadValue= percentage;
+        }, error=>{
+          console.log(error)},
+        ()=>{this.uploadValue=100;
+          task.snapshot.ref.getDownloadURL().then((url)=>{
+            this.picture=url;
+            console.log(this.picture)
+          })})
     }
   },
 }
@@ -332,9 +369,6 @@ export default {
   font-size: 1.2em;
   color: #d5dee3;
 }
-
-
-
 #popupajouter > h3 {
   font-family: 'Merienda',sans-serif;
   text-align: center;
@@ -352,7 +386,7 @@ export default {
   width: 100%;
   height: 300px;
 }
-#popupajouter > form > div {
+.champs {
   height: 110px;
 }
 #popupajouter > form > div > input {
@@ -376,7 +410,7 @@ export default {
   left: 50%;
   transform: translate(-50%,-50%);
   width: 600px;
-  height: 500px;
+  height: 770px;
   padding: 35px 50px 35px 50px;
   box-shadow: 0 5px 30px rgba(0,0,0,.30);
   background: #1c3454;
@@ -400,9 +434,18 @@ export default {
   padding: 15px 20px 15px 20px;
   font-family: 'Lexend',sans-serif;
   font-size: 1.2em;
-  margin-top: 10px;
   cursor: pointer;
+}
+.ajouter {
+  margin-top: 25px;
   transform: translateX(200px);
+}
+.upload {
+  margin: 0 10px 0 130px;
+  transition: .5s;
+}
+.upload:hover {
+  transform: scale(1.03);
 }
 .listeportfolio {
   text-align: left;
@@ -448,6 +491,19 @@ export default {
   flex-direction: column;
   box-shadow: 0 5px 20px rgba(0,0,0,0.5);
   transition: 0.3s ease-in-out;
+}
+.card > svg {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  transition: .5s;
+  color: #8f0002;
+}
+.card > svg:hover {
+  color: #d5dee3;
 }
 .container .card:hover {
   transform: translateY(-10px);
@@ -540,11 +596,15 @@ select {
   font-family: "Lexend", sans-serif;
   color: #d5dee3;
 }
-.poubelle {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
+.preview {
+  width: 250px;
+  height: 220px;
+  margin: 20px auto 0 auto;
+  border: 1px solid red;
+}
+.preview > img {
+  width: 100%;
+  height: 100%;
 }
 </style>
 

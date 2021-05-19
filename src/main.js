@@ -12,12 +12,12 @@ Vue.config.productionTip = false
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyAi9pdBph7YLyQjVdsEN-y0qy3cBs1HHww",
-  authDomain: "testauth-25951.firebaseapp.com",
-  projectId: "testauth-25951",
-  storageBucket: "testauth-25951.appspot.com",
-  messagingSenderId: "89162948169",
-  appId: "1:89162948169:web:b27c7a6230978e8dd3a998"
+  apiKey: "AIzaSyCddeV_CjP9Eh3uVRz8SfZrfvZcVJIG-AA",
+  authDomain: "mmiportfolio-b4b7a.firebaseapp.com",
+  projectId: "mmiportfolio-b4b7a",
+  storageBucket: "mmiportfolio-b4b7a.appspot.com",
+  messagingSenderId: "231130404524",
+  appId: "1:231130404524:web:c2cc47cb4e4ab6c145f109"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
