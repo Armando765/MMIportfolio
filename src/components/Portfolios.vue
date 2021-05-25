@@ -182,7 +182,7 @@ export default {
       images : [],
       imgfirebase: "",
       imageData: null,
-      picture: null,
+      picture: "",
       uploadValue: 0,
       selectedFile: null,
       query: "",
@@ -243,7 +243,7 @@ export default {
         Etudiant     : ajout.Etudiant,
         Specialite   : ajout.Specialite,
         Portfolio    : ajout.Portfolio,
-        img          : ajout.img,
+        img          : ajout.picture,
       });
       console.log(this.site);
     },

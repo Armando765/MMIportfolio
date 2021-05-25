@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Ajout/>
+    <Navigation/>
     <router-view/>
   </div>
 </template>
 
 <script>
-import Ajout from "./components/Ajout";
+import Navigation from "./components/Navigation";
 export default {
   name: 'App',
   components : {
-    Ajout,
+    Navigation
   },
   methods : {
   }
@@ -22,14 +22,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: #EBEBEB;
-}
-header {
-  width: 100%;
-  height: 70px;
-}
-nav {
-  width: 100%;
-  height: 100%;
 }
 #blur.active {
   filter: blur(20px);
@@ -106,6 +98,7 @@ nav {
 }
 
 
+/*
 nav > ul {
   list-style: none;
   margin: 0;
@@ -135,6 +128,7 @@ nav > ul > li > a {
 nav > ul > li > a:hover {
   color: #8F0002;
 }
+ */
 h1 {
   font-family: 'Lexend', sans-serif;
   color: #1D3354;

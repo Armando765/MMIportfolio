@@ -2,6 +2,7 @@
   <div>
     <div id="blur">
 
+      <!--
 
       <header>
         <nav>
@@ -13,7 +14,10 @@
         </nav>
       </header>
 
-      <h1>Portfolio des étudiants MMI</h1>
+-->
+
+
+      <h1>MMI Portfolio</h1>
 
 
       <p class="definition">
@@ -319,5 +323,111 @@ footer {
 footer > img {
   width: 250px;
   height: 100px;
+}
+
+/* RESPONSIVE */
+
+
+/* Responsive Smartphone */
+
+@media screen and (max-width: 764px) {
+  h1 {
+    font-family: 'Lexend', sans-serif;
+    color: #1D3354;
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  .definition {
+    font-family: 'Merienda', sans-serif;
+    font-size: 1em;
+    width: 80%;
+    height: 50px;
+    margin: auto;
+    text-align: center;
+    color: #8F0002;
+  }
+  .presentation > h2 {
+    font-family: 'Merienda', sans-serif;
+    color: #8F0002;
+    text-align: center;
+    font-size: 2em;
+    margin: 0 0 100px;
+  }
+  .presentation {
+    margin-top: 300px;
+  }
+  .flexpresentation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .flexpresentation > .svgzone > svg {
+    width: 400px;
+    height: 400px;
+  }
+  .flexpresentation > div {
+    width: 80%;
+    height: 50%;
+  }
+  .etudiant,.enseignant {
+    background-color: #1D3354;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+  }
+  .enseignant > p {
+    color: #EBEBEB;
+    font-family: 'Lexend', sans-serif;
+    font-size: 1em;
+    width: 80%;
+  }
+  .etudiant > p {
+    color: #EBEBEB;
+    font-family: 'Lexend', sans-serif;
+    width: 80%;
+    font-size: 1em;
+  }
+  .enseignant > a {
+    font-family: 'Merienda', sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #8F0002;
+    background-color: #EBEBEB;
+    padding: 10px 45px 10px 45px;
+    border-radius: 50px;
+    margin-top: 50px;
+    transition: .5s;
+  }
+  .etudiant > a {
+    font-family: 'Merienda', sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #8F0002;
+    background-color: #EBEBEB;
+    padding: 10px 45px 10px 45px;
+    border-radius: 50px;
+    margin-top: 50px;
+    transition: .5s;
+  }
+  .etudiant > a:hover,.enseignant > a:hover {
+    transform: scale(1.05);
+  }
+  footer {
+    width: 100%;
+    height: 300px;
+    background-color: #1c3454;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+  }
+  footer > img {
+    width: 150px;
+    height: 50px;
+  }
 }
 </style>

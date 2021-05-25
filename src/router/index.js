@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Accueil from '@/components/Accueil'
+import Navigation from '@/components/Navigation'
 import Portfolios from '@/components/Portfolios'
 
 import firebase from "firebase";
@@ -13,6 +14,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/Helloworld', name: 'HelloWorld', component: HelloWorld },
   { path: '/', name: 'Accueil', component: Accueil },
+  { path: '/', name: 'Navigation', component: Navigation },
   { path: '/Portfolios', name: 'Portfolios', component: Portfolios, meta: {requiresAuth: true} },
 ]
 
