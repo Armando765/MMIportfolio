@@ -23,8 +23,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
-
-
 let app;
 
 firebase.auth().onAuthStateChanged(user=> {

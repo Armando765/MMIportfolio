@@ -1,6 +1,7 @@
 <template>
   <div>
     <div id="blur">
+      <!--
       <header>
         <nav>
           <ul>
@@ -10,6 +11,7 @@
           </ul>
         </nav>
       </header>
+      -->
       <h1 class="listeportfolio">Liste des Portfolios</h1>
 
       <div class="filtrageportfolio">
@@ -17,6 +19,7 @@
         <input v-model="query" type="text" placeholder="Prénom Nom">
       </div>
 
+      <!--
       <div class="filter">
       <label><input type="radio" v-model="selectedSpecialite" value="All" /> Toutes</label>
       <label><input type="radio" v-model="selectedSpecialite" value="Developpement" /> Developpement</label>
@@ -25,6 +28,7 @@
       <label><input type="radio" v-model="selectedSpecialite" value="Motion Design" /> Motion Design</label>
     </div>
 
+-->
       <div class="container">
         <a href="#" @click="modaleAjout()" class="ajouterlien">Ajouter un Portfolio</a>
       </div>
@@ -50,11 +54,11 @@
       <h3>Ajouter un Portfolio</h3>
       <form action="">
         <div class="champs">
-          <label for="name">Etudiant :</label>
+          <label for="name">Prénom Nom de l'étudiant :</label>
           <input required v-model="site.Etudiant" type="text" id="name">
         </div>
         <div class="champs">
-          <label for="lien">Portfolio : </label>
+          <label for="lien">Lien du portfolio : </label>
           <input required v-model="site.Portfolio" type="text" id="lien">
         </div>
         <div class="champs">
@@ -67,7 +71,7 @@
           </select>
           <span class="selectionne">Spécialité sélectionnée : {{ site.Specialite }}</span>
         </div>
-        <input type="file" @change="onFileSelected">
+        <input class="inputfile" type="file" @change="onFileSelected">
         <button class="upload" @click.prevent="onUpload">Upload</button>
         <div class="preview">
           <img :src="this.picture" alt="preview">
@@ -605,6 +609,139 @@ select {
 .preview > img {
   width: 100%;
   height: 100%;
+}
+
+
+@media screen and (max-width: 764px) {
+  .listeportfolio {
+    text-align: center;
+    font-size: 30px;
+    margin: 15px 0 25px 0;
+  }
+  .filtrageportfolio {
+    width: 80%;
+    height: 50px;
+    margin-left: 25px;
+  }
+  .filtrageportfolio > p {
+    font-size: 1em;
+    color: #1c3454;
+    margin-bottom: 10px;
+  }
+  .filtrageportfolio > input {
+    width: 100%;
+    height: 40px;
+    font-size: 1em;
+    color: gray;
+  }
+  .container .card {
+    transition: all 1s;
+    position: relative;
+    width: 250px;
+    height: 100px;
+    background: #1c3454;
+    border-radius: 20px ;
+    margin: 35px 15px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  }
+  .container .card  .imgBx {
+    position: relative;
+    width: 200px;
+    min-height: 50px;
+    top: -60px;
+    left: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    background-image: url("../assets/mmiportfolioimg.jpg");
+  }
+  .container .card  .imgBx img {
+    max-width: 100%;
+    border-radius: 4px;
+    transition: .5s;
+  }
+  .content > h2 {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.2em;
+    color: #d5dee3;
+    visibility: visible;
+    margin-top: 48px;
+  }
+  #popupajouter {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 200px;
+    height: 500px;
+    padding: 10px 50px 35px 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0,.30);
+    background: #1c3454;
+    border-radius: 20px;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+  }
+  #popupajouter > h3 {
+    font-size: 1.3em;
+    margin: 0 0 25px 0;
+  }
+  #popupajouter > form {
+    width: 100%;
+    height: 300px;
+  }
+  .champs {
+    height: 80px;
+  }
+  #popupajouter > form > div > label {
+    font-size: 0.9em;
+    color: #d5dee3;
+  }
+  #popupajouter > form > div > input {
+    height: 35px;
+    display: block;
+    border-radius: 50px;
+    margin: 5px 0 0 0;
+  }
+  select {
+    width: 100%;
+    height: 35px;
+    margin: 15px 15px 0 0;
+    background-color: #d5dee3;
+    color: #1c3454;
+  }
+  .selectionne {
+    display: none;
+  }
+  .inputfile {
+
+  }
+  .upload {
+    margin: 20px 0 20px 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+    transform: translateX(50px);
+  }
+  #popupajouter > form > button {
+    width: 100px;
+    height: 50px;
+    background: #d5dee3;
+    border: none;
+    border-radius: 50px;
+    color: #8F0002;
+    padding: 5px 5px 5px 5px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  .preview {
+    display: none;
+  }
+  .ajouter {
+    margin-top: 20px;
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+  }
 }
 </style>
 

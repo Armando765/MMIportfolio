@@ -76,6 +76,7 @@ body {
   visibility: hidden;
   opacity: 0;
   transition: .5s;
+  z-index: 999999;
 }
 #popup.active {
   top: 50%;
@@ -148,5 +149,23 @@ footer {
 footer > img {
   width: 250px;
   height: 100px;
+}
+
+@media screen and (max-width: 764px) {
+  #popup {
+    width: 200px;
+    height: 400px;
+    z-index: 999999;
+  }
+  #popup > form > button {
+    transform: translateX(0);
+  }
+  #popup > h3 {
+    font-family: 'Merienda',sans-serif;
+    text-align: center;
+    color: #d5dee3;
+    font-size: 1.5em;
+    margin: 50px 0 5px 0;
+  }
 }
 </style>

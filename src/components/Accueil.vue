@@ -21,7 +21,7 @@
 
 
       <p class="definition">
-        MMI Portfolio est un site répertoriant les différents portfolios de chaque étudiant. Que vous soyez étudiant ou enseignant, vous pouvez admirer les différentes créations en vous connectant sur le site.
+        MMI Portfolio répertorie les différents portfolios de chaque étudiant. Vous êtes étudiant ou enseignant ? Vous pouvez admirer les différentes créations en vous connectant sur le site.
       </p>
 
       <div class="explication">
@@ -355,8 +355,14 @@ footer > img {
     font-size: 2em;
     margin: 0 0 100px;
   }
-  .presentation {
+  .presentation > h2:first-child {
+    margin-bottom: 25px;
+  }
+  .presentation:first-child {
     margin-top: 300px;
+  }
+  .presentation:last-child {
+    margin-top: 50px;
   }
   .flexpresentation {
     display: flex;
@@ -368,8 +374,8 @@ footer > img {
     height: 400px;
   }
   .flexpresentation > div {
-    width: 80%;
-    height: 50%;
+    width: 90%;
+    height: 35%;
   }
   .etudiant,.enseignant {
     background-color: #1D3354;
@@ -382,18 +388,18 @@ footer > img {
   .enseignant > p {
     color: #EBEBEB;
     font-family: 'Lexend', sans-serif;
-    font-size: 1em;
+    font-size: 16px;
     width: 80%;
   }
   .etudiant > p {
     color: #EBEBEB;
     font-family: 'Lexend', sans-serif;
     width: 80%;
-    font-size: 1em;
+    font-size: 16px;
   }
   .enseignant > a {
     font-family: 'Merienda', sans-serif;
-    font-size: 1.5em;
+    font-size: 1em;
     text-decoration: none;
     color: #8F0002;
     background-color: #EBEBEB;
@@ -404,7 +410,7 @@ footer > img {
   }
   .etudiant > a {
     font-family: 'Merienda', sans-serif;
-    font-size: 1.5em;
+    font-size: 1em;
     text-decoration: none;
     color: #8F0002;
     background-color: #EBEBEB;
@@ -423,7 +429,6 @@ footer > img {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
   }
   footer > img {
     width: 150px;
