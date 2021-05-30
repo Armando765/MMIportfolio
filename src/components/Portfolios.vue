@@ -1,17 +1,6 @@
 <template>
   <div>
     <div id="blur">
-      <!--
-      <header>
-        <nav>
-          <ul>
-            <li><a v-if="loggedIn" href="#" @click="signOut()">Déconnexion</a><a href="#" v-else @click="Modale">Se Connecter</a></li>
-            <li><a v-if="loggedIn">Etat : Connecté</a><a v-else href="#">Etat : Non Connecté</a></li>
-            <li><a href="#">Accueil</a></li>
-          </ul>
-        </nav>
-      </header>
-      -->
       <h1 class="listeportfolio">Liste des Portfolios</h1>
 
       <div class="filtrageportfolio">
@@ -19,7 +8,6 @@
         <input v-model="query" type="text" placeholder="Prénom Nom">
       </div>
 
-      <!--
       <div class="filter">
       <label><input type="radio" v-model="selectedSpecialite" value="All" /> Toutes</label>
       <label><input type="radio" v-model="selectedSpecialite" value="Developpement" /> Developpement</label>
@@ -28,7 +16,6 @@
       <label><input type="radio" v-model="selectedSpecialite" value="Motion Design" /> Motion Design</label>
     </div>
 
--->
       <div class="container">
         <a href="#" @click="modaleAjout()" class="ajouterlien">Ajouter un Portfolio</a>
       </div>
@@ -37,7 +24,7 @@
 
 
       <transition-group class="container" name="flip-list" tag="div">
-        <div class="card" v-for="(test, index) in SearchByEtudiant" :key="test.Etudiant">
+        <div class="card" v-for="(test, index) in filterBySpecialiteEtudiant" :key="test.Etudiant">
           <svg @click="remove(index)" width="25px" height="25px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash-alt" class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg>
           <div class="imgBx">
             <a :href="test.Portfolio"><img alt="image du portfolio" :src="test.img"></a>
@@ -71,7 +58,7 @@
           </select>
           <span class="selectionne">Spécialité sélectionnée : {{ site.Specialite }}</span>
         </div>
-        <input class="inputfile" type="file" @change="onFileSelected">
+        <input class="inputfile" type="file"  v-on:change="onFileSelected">
         <button class="upload" @click.prevent="onUpload">Upload</button>
         <div class="preview">
           <img :src="this.picture" alt="preview">
@@ -178,6 +165,7 @@ import firebase from "firebase";
 import "firebase/auth";
 import "firebase/storage"
 import axios from 'axios'
+
 export default {
   name:'Portfolios',
   data () {
@@ -211,33 +199,32 @@ export default {
       });
     firebase.auth().onAuthStateChanged(user=> {
       this.loggedIn = !!user;
-      /*
-      if (user){
-        this.loggedIn = true;
-      }else{
-        this.logged = false;
-      }
-       */
     })
   },
   computed:{
+    //filtrage par spécialité //
+
     filtreSpecialite: function() {
-      var vm = this;
-      var category = vm.selectedSpecialite;
+      var vm = this.site;
+      var category = this.selectedSpecialite;
       if(category === "All") {
-        return vm.site;
+        return vm;
       } else {
-        return vm.site.filter(function(person) {
+        return vm.filter(function(person) {
           return person.Specialite === category;
         });
       }
     },
+    // autocomplétion //
     SearchByEtudiant: function (){
+
+    },
+    filterBySpecialiteEtudiant: function () {
       var query = this.query;
-      return this.site.filter(function (eleve){
+      return this.filtreSpecialite.filter(function (eleve){
         return eleve.Etudiant.includes(query);
       })
-    },
+    }
   },
   methods:{
     // Fonction ajouter un portfolio
@@ -256,6 +243,9 @@ export default {
       this.index = this.site;
       this.site.splice(index, 1)
     },
+
+    // les modales //
+
     modaleAjout: function () {
       var blur = document.getElementById('blur');
       blur.classList.toggle('active')
@@ -278,6 +268,9 @@ export default {
         console.log(err)
       }
     },
+
+    // fonctions pour upload une image sur Firebase //
+
     onFileSelected(event) {
       this.selectedFile = event.target.files[0];
     },
